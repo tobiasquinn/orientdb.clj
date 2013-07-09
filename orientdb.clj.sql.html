@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head><link href="css/default.css" rel="stylesheet" type="text/css"><script src="js/jquery.min.js" type="text/javascript"></script><script src="js/page_effects.js" type="text/javascript"></script><title>orientdb.clj.sql documentation</title></head><body><div id="header"><h1><a href="index.html">Orientdb.clj 0.1.0-SNAPSHOT API documentation</a></h1></div><div class="sidebar" id="namespaces"><h3><span>Namespaces</span></h3><ul><li><a href="orientdb.clj.html"><span>orientdb.clj</span></a></li><li><a href="orientdb.clj.cache.html"><span>orientdb.clj.cache</span></a></li><li><a href="orientdb.clj.cluster.html"><span>orientdb.clj.cluster</span></a></li><li><a href="orientdb.clj.hook.html"><span>orientdb.clj.hook</span></a></li><li><a href="orientdb.clj.kv.html"><span>orientdb.clj.kv</span></a></li><li><a href="orientdb.clj.schema.html"><span>orientdb.clj.schema</span></a></li><li><a href="orientdb.clj.script.html"><span>orientdb.clj.script</span></a></li><li class="current"><a href="orientdb.clj.sql.html"><span>orientdb.clj.sql</span></a></li></ul></div><div class="sidebar" id="vars"><h3>Public Vars</h3><ul><li><a href="orientdb.clj.sql.html#var-defsqlfilter"><span>defsqlfilter</span></a></li><li><a href="orientdb.clj.sql.html#var-defsqlfn"><span>defsqlfn</span></a></li><li><a href="orientdb.clj.sql.html#var-execute%21"><span>execute!</span></a></li><li><a href="orientdb.clj.sql.html#var-install-fn%21"><span>install-fn!</span></a></li><li><a href="orientdb.clj.sql.html#var-query"><span>query</span></a></li><li><a href="orientdb.clj.sql.html#var-uninstall-fn%21"><span>uninstall-fn!</span></a></li></ul></div><div class="namespace-docs" id="content"><h2>orientdb.clj.sql documentation</h2><pre class="doc"></pre><div class="public" id="var-defsqlfilter"><h3>defsqlfilter</h3><div class="usage"><code>(defsqlfilter sym &amp; body)</code></div><pre class="doc">Defines a SQL function used for filtering.
+The same rules that apply to 'defsqlfn' apply to defsqlfilter.</pre></div><div class="public" id="var-defsqlfn"><h3>defsqlfn</h3><div class="usage"><code>(defsqlfn sym &amp; body)</code></div><pre class="doc">Defines a regular SQL function that can be installed on the SQL engine.
+Besides the arguments in it's arity, it will also receive the implicit arguments &amp;document and &amp;ctx,
+of types ODocumentWrapper and OCommandContext respectively.
+
+The function can have multiple arities and rest (&amp;) parameters.
+The parameters must NOT include map destructuring, but they can include sequence destructuring.</pre></div><div class="public" id="var-execute%21"><h3>execute!</h3><div class="usage"><code>(execute! command &amp; [params])</code></div><pre class="doc">Runs the given SQL command (with optional arguments like those of query).
+</pre></div><div class="public" id="var-install-fn%21"><h3>install-fn!</h3><div class="usage"><code>(install-fn! sql-fn)</code></div><pre class="doc">Installs a SQL function into the database (one defined using defsqlfn or defsqlfilter)
+</pre></div><div class="public" id="var-query"><h3>query</h3><div class="usage"><code>(query query &amp; [params options callback])</code></div><pre class="doc">Executes the given SQL query with the given parameters (as a Clojure vector or map)
+and :fetch-plan and :paginate? options.
+
+When using positional parameters (?), use a vector.
+When using named parameters (:param), use a map.
+
+If passed a callback, the query will be run asynchronously.
+The callback must be a function of 1 argument that will be run once for each matching result.
+
+The :paginate? option will only work on synchronous queries.</pre></div><div class="public" id="var-uninstall-fn%21"><h3>uninstall-fn!</h3><div class="usage"><code>(uninstall-fn! sql-fn)</code></div><pre class="doc">
+</pre></div></div></body></html>

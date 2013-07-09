@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head><link href="css/default.css" rel="stylesheet" type="text/css"><script src="js/jquery.min.js" type="text/javascript"></script><script src="js/page_effects.js" type="text/javascript"></script><title>orientdb.clj.hook documentation</title></head><body><div id="header"><h1><a href="index.html">Orientdb.clj 0.1.0-SNAPSHOT API documentation</a></h1></div><div class="sidebar" id="namespaces"><h3><span>Namespaces</span></h3><ul><li><a href="orientdb.clj.html"><span>orientdb.clj</span></a></li><li><a href="orientdb.clj.cache.html"><span>orientdb.clj.cache</span></a></li><li><a href="orientdb.clj.cluster.html"><span>orientdb.clj.cluster</span></a></li><li class="current"><a href="orientdb.clj.hook.html"><span>orientdb.clj.hook</span></a></li><li><a href="orientdb.clj.kv.html"><span>orientdb.clj.kv</span></a></li><li><a href="orientdb.clj.schema.html"><span>orientdb.clj.schema</span></a></li><li><a href="orientdb.clj.script.html"><span>orientdb.clj.script</span></a></li><li><a href="orientdb.clj.sql.html"><span>orientdb.clj.sql</span></a></li></ul></div><div class="sidebar" id="vars"><h3>Public Vars</h3><ul><li><a href="orientdb.clj.hook.html#var-add%21"><span>add!</span></a></li><li><a href="orientdb.clj.hook.html#var-defhook"><span>defhook</span></a></li><li><a href="orientdb.clj.hook.html#var-hook"><span>hook</span></a></li><li><a href="orientdb.clj.hook.html#var-hooks"><span>hooks</span></a></li><li><a href="orientdb.clj.hook.html#var-remove%21"><span>remove!</span></a></li><li><a href="orientdb.clj.hook.html#var-remove-all%21"><span>remove-all!</span></a></li></ul></div><div class="namespace-docs" id="content"><h2>orientdb.clj.hook documentation</h2><pre class="doc"></pre><div class="public" id="var-add%21"><h3>add!</h3><div class="usage"><code>(add! hook)</code></div><pre class="doc">
+</pre></div><div class="public" id="var-defhook"><h3>defhook</h3><div class="usage"><code>(defhook sym &amp; triggers)</code></div><pre class="doc">Defines a hook and creates a global binding for it (with an optional doc-string).
+Note: The hook is NOT automatically addded to the DB.</pre></div><div class="public" id="var-hook"><h3>hook</h3><div class="usage"><code>(hook &amp; triggers)</code></div><pre class="doc">Creates a new hook from the following fn definitions (each one is optional):
+  (before-create [~document] ~@body)
+  (before-read [~document] ~@body)
+  (before-update [~document] ~@body)
+  (before-delete [~document] ~@body)
+  (after-create [~document] ~@body)
+  (after-read [~document] ~@body)
+  (after-update [~document] ~@body)
+  (after-delete [~document] ~@body)
+
+All the before-* hooks can return a value that will be taken into account by the DB.
+  :changed     &lt;- means the record has changed.
+  :not-changed &lt;- means the record has not changed.
+  :skip        &lt;- means the record can be skipped.
+  All values which are not any of these will be interpreted as :changed.
+
+The after-* hooks' return values won't affect the DB and can be anything.</pre></div><div class="public" id="var-hooks"><h3>hooks</h3><div class="usage"><code>(hooks)</code></div><pre class="doc">
+</pre></div><div class="public" id="var-remove%21"><h3>remove!</h3><div class="usage"><code>(remove! hook)</code></div><pre class="doc">
+</pre></div><div class="public" id="var-remove-all%21"><h3>remove-all!</h3><div class="usage"><code>(remove-all!)</code></div><pre class="doc">
+</pre></div></div></body></html>
