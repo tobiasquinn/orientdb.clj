@@ -160,6 +160,12 @@
   [location user password]
   (.acquire (OGraphDatabasePool/global) location user password))
 
+(defn set-db! "Sets *db*'s root binding to the given DB."
+  [db]
+  (alter-var-root #'*db* (fn [_] db))
+;  (.set ODatabaseRecordThreadLocal/INSTANCE db)
+  db)
+
 (do-template [<sym> <doc-str> <body>]
   (defn <sym> <doc-str>
     ([] (<sym> *db*))
